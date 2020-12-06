@@ -1,7 +1,8 @@
+  
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-mysql01
+  name: wordpress-mysql
   labels:
     app: wordpress
 spec:
@@ -28,7 +29,7 @@ spec:
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: wordpress-mysql01
+  name: wordpress-mysql
   labels:
     app: wordpress
 spec:
@@ -49,10 +50,7 @@ spec:
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-pass
-              key: password
+          value: P@$$w0rd
         ports:
         - containerPort: 3306
           name: mysql
